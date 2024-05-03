@@ -21,11 +21,12 @@ class _MyAppState extends State<MyApp> {
       _isLoading = true;
       _errorMessage = '';
     });
+
     try {
       var data = await _apiService.fetchData();
       setState(() {
-        // Remove the assignment of `data` to `_data`
-        // _data = data;
+        _data = data;
+        _errorMessage = 'Data loaded successfully!';
       });
     } catch (e) {
       setState(() {
@@ -56,16 +57,15 @@ class _MyAppState extends State<MyApp> {
   Widget _buildBody() {
     if (_isLoading) {
       return Center(child: CircularProgressIndicator());
-    } else if (_errorMessage.isNotEmpty) {
+    } else if (_errorMessage.isNotEmpty && _data.isEmpty) {
       return Center(child: Text(_errorMessage));
-    } else if (_data.isEmpty) {
-      return Center(child: Text('No data fetched. Press the button to load data.'));
     } else {
       return ListView.builder(
         itemCount: _data.length,
         itemBuilder: (context, index) {
+          var item = _data[index];
           return ListTile(
-            title: Text(_data[index].toString()),
+            title: Text(item['declarationTitle'] ?? 'No title available'),  // Adjusted to correct key based on JSON
           );
         },
       );

@@ -21,6 +21,7 @@ class FloodRiskButton extends StatelessWidget {
             side: const BorderSide(color: Colors.white, width: 2), // White border
           ),
           elevation: 5,  // Shadow depth, adjust as necessary
+          minimumSize: Size(400, 100),
           shadowColor: Colors.black.withOpacity(0.5),  // Shadow color with some transparency
         ),
         child: const Text('ARE YOU AT RISK OF A FLOOD?'),

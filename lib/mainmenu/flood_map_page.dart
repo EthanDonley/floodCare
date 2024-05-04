@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/bottom_nav_bar.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,6 +24,7 @@ class Page1 extends StatelessWidget {
           backgroundColor: Colors.red,
         ),
       );
+      
     }
   }
 
@@ -38,6 +40,7 @@ class Page1 extends StatelessWidget {
           fit: BoxFit.contain,
         ),
       ),
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 

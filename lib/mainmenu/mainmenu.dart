@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/bottom_nav_bar.dart';
 import 'package:flutter_playground/mainmenu/flood_map_page.dart';
 
 class MainMenu extends StatelessWidget {
@@ -34,6 +35,7 @@ class MainMenu extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 
@@ -63,6 +65,7 @@ class Page2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Page 2")),
       body: Center(child: Text("This is Page 2")),
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 }
@@ -73,6 +76,7 @@ class Page3 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Page 3")),
       body: Center(child: Text("This is Page 3")),
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 }
@@ -83,6 +87,7 @@ class Page4 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Page 4")),
       body: Center(child: Text("This is Page 4")),
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 }

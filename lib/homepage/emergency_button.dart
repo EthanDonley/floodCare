@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EmergencyButton extends StatelessWidget {
   const EmergencyButton({Key? key}) : super(key: key);
 
-
-  
+  // Function to launch URL
+  void _launchURL() async {
+    const url = 'https://www.ready.gov/floods';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 25),
       child: ElevatedButton(
-        onPressed: (){
-          // nothin
-        },
+        onPressed: _launchURL, // Updated to call the URL launching function
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             const CircleBorder(side: BorderSide(color: Colors.white, width: 4)), // White stroke around the button

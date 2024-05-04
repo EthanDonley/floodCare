@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/mainmenu/mainmenu.dart';
 
 class FloodRiskButton extends StatelessWidget {
   const FloodRiskButton({Key? key}) : super(key: key);
@@ -9,7 +10,11 @@ class FloodRiskButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 100),
       child: ElevatedButton(
         onPressed: () {
-          // Add your functionality for checking flood risk
+          // Navigate to MainMenu when this button is pressed
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MainMenu()),
+          );
         },
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,

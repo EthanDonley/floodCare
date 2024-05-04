@@ -5,27 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class EmergencyButton extends StatelessWidget {
   const EmergencyButton({Key? key}) : super(key: key);
 
-  void _handleEmergencyPressed(BuildContext context) async {
-    try {
-      // Get the current location
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-      // Construct the URL
-      String url = 'https://gis.lfpz.water.ca.gov/lfpz/?lat=${position.latitude}&lon=${position.longitude}';
-      
-      if (!await launch(url)) {
-        throw 'Could not launch $url';
-      }
-    } catch (e) {
-      // Handle exceptions
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to get location or open the URL: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
   
 
   @override
@@ -33,7 +13,9 @@ class EmergencyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 25),
       child: ElevatedButton(
-        onPressed: () => _handleEmergencyPressed(context),
+        onPressed: (){
+          // nothin
+        },
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             const CircleBorder(side: BorderSide(color: Colors.white, width: 4)), // White stroke around the button

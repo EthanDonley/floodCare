@@ -3,8 +3,8 @@ import 'package:flutter_playground/bottom_nav_bar.dart';
 import 'package:flutter_playground/homepage/title_section.dart';
 import 'package:flutter_playground/homepage/wave_header.dart';
 
-class EmergencyPage extends StatelessWidget {
-  const EmergencyPage({Key? key}) : super(key: key);
+class CurrentEventsPage extends StatelessWidget {
+  const CurrentEventsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,10 @@ class EmergencyPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: const Text(
-                "CONTACTING EMERGENCY RESCUE SERVICES...",
+                "Current Events",
                 style: TextStyle(
                   fontSize: 24,
-                  color: Colors.red,
+                  color:  Color.fromARGB(255, 68, 113, 167),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -38,10 +38,10 @@ class EmergencyPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: const Text(
-                "While you wait",
+                "View Current Flooding Events",
                 style: TextStyle(
                   fontSize: 24,
-                  color: Color.fromARGB(255, 68, 113, 167),
+                  color: Colors.blue,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -50,14 +50,14 @@ class EmergencyPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: Image.asset(
-                'assets/images/Emergencycard1.png',  // Replace with your asset path
+                'assets/images/newscard1.png',  // Replace with your asset path
                 fit: BoxFit.cover, // Adjust the fit as needed
               ),
             ),
-           Padding(
+             Padding(
               padding: const EdgeInsets.all(5.0),
               child: Image.asset(
-                'assets/images/Emergencycard2.png',  // Replace with your asset path
+                'assets/images/newscard2.png',  // Replace with your asset path
                 fit: BoxFit.cover, // Adjust the fit as needed
               ),
             ),

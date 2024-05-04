@@ -106,7 +106,7 @@ class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomFooter(), // Ensure this is correctly imported and exists
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 }

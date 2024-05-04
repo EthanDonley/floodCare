@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/emergency_button.dart';
-import 'package:flutter_playground/flood_risk_button.dart';
-import 'package:flutter_playground/title_section.dart';
-import 'package:flutter_playground/wave_header.dart';
+import 'package:flutter_playground/homepage/emergency_button.dart';
+import 'package:flutter_playground/homepage/flood_risk_button.dart';
+import 'package:flutter_playground/homepage/title_section.dart';
+import 'package:flutter_playground/homepage/wave_header.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

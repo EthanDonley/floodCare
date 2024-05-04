@@ -15,7 +15,7 @@ class TitleSection extends StatelessWidget {
               bottom: 0,
               child: CustomPaint(
                 painter: SquigglyLinePainter(),
-                child: const SizedBox(
+                child: SizedBox(
                   width: 155,  // Adjust the width to match the width of the "flood" text
                   height: 10,  // Minimal height to fit the squiggly line
                 ),

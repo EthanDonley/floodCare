@@ -1,26 +1,32 @@
-import 'package:path/path.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:io';
 
 class DatabaseService {
-  static Database? _database;
+  Future<List<dynamic>> fetchData() async {
+    var url = Uri.parse('https://flood-api.open-meteo.com/v1/flood?latitude=59.91&longitude=10.75&daily=river_discharge');
 
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    // Ensure the database is initialized here before returning
-    _database = await initDB();
-    return _database!;
+    try {
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        // Assume data is directly a list for simplicity
+        await writeFile(data);
+        return data;
+      } else {
+        throw Exception('Failed to load data from API: Server returned ${response.statusCode}');
+      }
+    } on SocketException {
+      throw Exception('No Internet connection');
+    } on HttpException {
+      throw Exception('Could not find the data');
+    } on FormatException {
+      throw Exception('Bad response format');
+    }
   }
 
-  initDB() async {
-  String path = join(await getDatabasesPath(), 'data.db');
-  return await openDatabase(path, version: 1, onCreate: (Database db, int version) async {
-    await db.execute("CREATE TABLE Data(id INTEGER PRIMARY KEY, declarationTitle TEXT)");
-  });
-}
-
-  // Example function to fetch data
-  Future<List<Map<String, dynamic>>> fetchData() async {
-    final db = await database; // This ensures the database is initialized
-    return await db.query('Data');
+  Future<void> writeFile(List<dynamic> data) async {
+    final file = File('path/to/your/file.txt'); // Specify the file path
+    await file.writeAsString(jsonEncode(data));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'DatabaseService.dart';
+import 'weatherservice.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -7,8 +8,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final DatabaseService _dbService = DatabaseService();
-  List<dynamic> _data = [];
+  final WeatherService _weatherService = WeatherService();
+  dynamic _data;  // Changed from List<dynamic> to dynamic to handle both Map and List types
   bool _isLoading = false;
   String _errorMessage = '';
 
@@ -25,20 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
   });
 
   try {
-    var data = await _dbService.fetchData();
-    if (data.isEmpty) {
-      setState(() {
-        _errorMessage = 'No data available';
-      });
-    } else {
-      setState(() {
-        _data = data;
-        _errorMessage = 'Data loaded successfully!';
-      });
-    }
+    var data = await _weatherService.fetchRiverDischargeData();
+    setState(() {
+      // If data contains a key that holds the list, access it directly
+      _data = data['river_discharge'];  // Assuming 'river_discharge' is the key where the list of data is stored
+      _errorMessage = 'Data loaded successfully!';
+    });
   } catch (e) {
     setState(() {
-      _errorMessage = "Failed to load data: ${e.toString()}";
+      _errorMessage = e.toString();
       _data = [];
     });
   } finally {
@@ -48,32 +44,34 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-  Widget _buildBody() {
-    if (_isLoading) {
-      return Center(child: CircularProgressIndicator());
-    } else if (_errorMessage.isNotEmpty && _data.isEmpty) {
-      return Center(child: Text(_errorMessage));
-    } else {
-      return ListView.builder(
-        itemCount: _data.length,
-        itemBuilder: (context, index) {
-          var item = _data[index];
-          return ListTile(
-            title: Text(item['declarationTitle'] ?? 'No title available'),
-            subtitle: Text(item['someOtherKey'] ?? 'No additional info'),  // Example additional data
-          );
-        },
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Data Display Example'),
+        title: Text('River Discharge Data'),
       ),
       body: _buildBody(),
     );
+  }
+
+  
+  Widget _buildBody() {
+    if (_isLoading) {
+      return Center(child: CircularProgressIndicator());
+    } else if (_errorMessage.isNotEmpty) {
+      return Center(child: Text(_errorMessage));
+    } else if (_data == null || _data.isEmpty) {
+      return Center(child: Text('No data to display.'));
+    } else {
+      return ListView.builder(
+        itemCount: _data.length,  // This assumes _data is a List
+        itemBuilder: (context, index) {
+          var item = _data[index];
+          return ListTile(
+            title: Text('Date: ${item['date']} - Discharge: ${item['discharge']} m³/s'),  // Adjust keys according to actual data structure
+          );
+        },
+      );
+    }
   }
 }

@@ -7,7 +7,7 @@ class FloodRiskButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 100),
+      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 35),
       child: ElevatedButton(
         onPressed: () {
           // Navigate to MainMenu when this button is pressed

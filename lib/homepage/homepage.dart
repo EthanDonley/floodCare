@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/bottom_nav_bar.dart';
 import 'package:flutter_playground/homepage/emergency_button.dart';
 import 'package:flutter_playground/homepage/flood_risk_button.dart';
 import 'package:flutter_playground/homepage/title_section.dart';
@@ -32,6 +33,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: const CustomFooter(),
     );
   }
 }

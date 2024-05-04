@@ -27,8 +27,9 @@ class MainMenu extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             menuButton(context, "View my Flood Map", Page1()),
-            menuButton(context, "Page 2", Page2()),
-            menuButton(context, "Page 3", Page3()),
+            menuButton(context, "Take a Stand", Page2()),
+            menuButton(context, "Prepare", Page3()),
+            menuButton(context, "Current Events", Page4())
             // More buttons can be added here
           ],
         ),
@@ -72,6 +73,16 @@ class Page3 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Page 3")),
       body: Center(child: Text("This is Page 3")),
+    );
+  }
+}
+
+class Page4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Page 4")),
+      body: Center(child: Text("This is Page 4")),
     );
   }
 }

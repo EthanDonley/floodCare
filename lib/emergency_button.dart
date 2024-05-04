@@ -26,6 +26,7 @@ class EmergencyButton extends StatelessWidget {
               return null;
             },
           ),
+          side: MaterialStateProperty.all(BorderSide(color: Colors.white, width: 2)),
         ),
       ),
     );

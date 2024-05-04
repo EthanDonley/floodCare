@@ -5,11 +5,29 @@ class TitleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Center(
-        child: Text(
-          'FLOODCARE',
-          style: TextStyle(fontSize: 64, fontWeight: FontWeight.bold, color: Colors.blue),
+        child: RichText(
+          text: const TextSpan(
+            children: [
+              TextSpan(
+                text: 'flood',
+                style: TextStyle(
+                  fontSize: 64,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue, // Navy blue color for "flood"
+                ),
+              ),
+              TextSpan(
+                text: 'Care',
+                style: TextStyle(
+                  fontSize: 64,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red, // Red color for "CARE"
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

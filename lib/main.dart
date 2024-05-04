@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'api_service.dart';
+import 'DatabaseService.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+
 
 void main() {
+  // Initialize sqflite for FFI
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
+
   runApp(MyApp());
 }
 
@@ -11,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final FemaApiService _apiService = FemaApiService();
+  final DatabaseService _dbService = DatabaseService();
   List<dynamic> _data = [];
   bool _isLoading = false;
   String _errorMessage = '';
@@ -23,9 +29,9 @@ class _MyAppState extends State<MyApp> {
     });
 
     try {
-      var data = await _apiService.fetchData();
+      var data = await _dbService.fetchData();
       setState(() {
-        _data = data;
+        _data = data.map((item) => item['declarationTitle']).toList();
         _errorMessage = 'Data loaded successfully!';
       });
     } catch (e) {

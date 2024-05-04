@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/bottom_nav_bar.dart';
 import 'package:flutter_playground/mainmenu/flood_map_page.dart';
 import 'package:flutter_playground/morepages/emergency_checklist.dart';
+import 'package:flutter_playground/morepages/officials_page.dart';
 
 class MainMenu extends StatelessWidget {
   const MainMenu({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class MainMenu extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             menuButton(context, "View my Flood Map", Page1()),
-            menuButton(context, "Take a Stand", Page2()),
+            menuButton(context, "Take a Stand", OfficialsPage()),
             menuButton(context, "Prepare", EmergencyPreparationPage()),
             menuButton(context, "Current Events", Page4())
             // More buttons can be added here

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/emergencypage/emergency_page.dart';
+import 'package:flutter_playground/homepage/homepage.dart';
 
 class CustomFooter extends StatelessWidget {
+
   const CustomFooter({Key? key}) : super(key: key);
 
   @override
@@ -21,9 +24,23 @@ class CustomFooter extends StatelessWidget {
         ),
       ],
       onDestinationSelected: (int index) {
-        // Handle navigation logic here
+        if (index == 0) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EmergencyPage()),
+          );
+        } else if (index == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const HomePage()),
+          );
+        } else if (index == 2) {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => InformationScreen()),
+          // );
+        }
       },
-      selectedIndex: 0,  // Default selected index, set it as per your navigation logic
     );
   }
 }

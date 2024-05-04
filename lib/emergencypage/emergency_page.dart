@@ -1,36 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/bottom_nav_bar.dart';
-import 'package:flutter_playground/homepage/title_section.dart';
-import 'package:flutter_playground/homepage/wave_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-
-
-class EmergencyPage extends StatelessWidget {
-  const EmergencyPage({Key? key}) : super(key: key);
+class EmergencyScreen extends StatelessWidget {
+  const EmergencyScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.lightBlue.shade100,
-              Colors.lightBlue.shade400,
-            ],
-            stops: const [0.0, 1.0],
-          ),
-        ),
-        child: const Column(
+      appBar: AppBar(
+        title: Text('Emergency Contact'),
+        backgroundColor: Colors.blue,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            WaveHeader(),
-            TitleSection(),
+            Container(
+              padding: EdgeInsets.all(16),
+              child: Image.asset('assets/flood_care_logo.png'),  // Ensure you have this logo in your assets
+            ),
+            Text(
+              'CONTACTING EMERGENCY RESCUE SERVICES...',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            ListTile(
+              leading: Icon(Icons.phone, color: Colors.blue),
+              title: Text('209-468-6818'),
+              subtitle: Text('San Joaquin County Emergency Medical Services'),
+              onTap: () => launch('tel:209-468-6818'),
+            ),
+            ListTile(
+              leading: Icon(Icons.location_on, color: Colors.blue),
+              title: Text('505 W. Service Road, Benton Hall, Room 47'),
+              subtitle: Text('French Camp, CA 95231'),
+            ),
+            ListTile(
+              leading: Icon(Icons.map, color: Colors.blue),
+              title: Text('San Joaquin County Evacuation Maps'),
+              onTap: () => launch('https://sjmap.org/evacmaps/'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {}, // Define navigation logic
+                ),
+                IconButton(
+                  icon: Icon(Icons.warning),
+                  onPressed: () {}, // Define navigation logic
+                ),
+                IconButton(
+                  icon: Icon(Icons.info),
+                  onPressed: () {}, // Define navigation logic
+                ),
+              ],
+            )
           ],
         ),
       ),
-      bottomNavigationBar: const CustomFooter(),
     );
   }
 }

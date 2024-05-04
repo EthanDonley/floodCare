@@ -25,7 +25,7 @@ void getAddressFromLatLng() async {
   _locationData = await location.getLocation();
 
   // Geocoding API URL (replace YOUR_API_KEY with your actual Google Maps Geocoding API key)
-  String googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=${_locationData.latitude},${_locationData.longitude}&key=YOUR_API_KEY';
+  String googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=${_locationData.latitude},${_locationData.longitude}&key=AIzaSyAgmS8A2m6ipqcspm0Xg3TnB217pYlLiR0';
 
   // Make HTTP request
   var response = await http.get(Uri.parse(googleAPIUrl));

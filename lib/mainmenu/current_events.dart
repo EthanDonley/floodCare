@@ -9,6 +9,10 @@ class CurrentEventsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(''),
+        backgroundColor: Colors.white,
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

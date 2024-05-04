@@ -24,7 +24,6 @@ class EmergencyPage extends StatelessWidget {
         child: Column(
           children: [
             const WaveHeader(),
-            const TitleSection(),
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: const Text(

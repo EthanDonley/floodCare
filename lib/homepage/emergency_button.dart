@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/emergencypage/emergency_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EmergencyButton extends StatelessWidget {
@@ -19,7 +20,13 @@ class EmergencyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 25),
       child: ElevatedButton(
-        onPressed: _launchURL, // Updated to call the URL launching function
+        // Switch to emergency response page when this button is pressed
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EmergencyPage()),
+          );
+        },
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             const CircleBorder(side: BorderSide(color: Colors.white, width: 4)), // White stroke around the button

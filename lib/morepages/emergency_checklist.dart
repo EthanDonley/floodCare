@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_playground/homepage/wave_header.dart';
 import 'package:flutter_playground/bottom_nav_bar.dart';
+import 'package:flutter_playground/homepage/title_section.dart';
+import 'package:flutter_playground/homepage/wave_header.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EmergencyPreparationPage extends StatefulWidget {
   @override
@@ -10,13 +11,14 @@ class EmergencyPreparationPage extends StatefulWidget {
 
 class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
   late SharedPreferences _prefs;
-  late Map<String, bool> _checklistItems;
+  Map<String, bool> _checklistItems = {};  // Initialize as empty
 
   @override
   void initState() {
     super.initState();
     _initPreferences();
   }
+
 
   Future<void> _initPreferences() async {
     _prefs = await SharedPreferences.getInstance();
@@ -42,7 +44,6 @@ class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
         'Wrench and pliers': _prefs.getBool('Wrench and pliers') ?? false,
         'Waterproof matches': _prefs.getBool('Waterproof matches') ?? false,
         'Gallons of water': _prefs.getBool('Gallons of water') ?? false,
-        // Add more checklist items as needed
       };
     });
   }
@@ -57,6 +58,10 @@ class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Emergency Preparation'),
+        backgroundColor: Colors.lightBlue.shade400,
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -66,7 +71,6 @@ class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
               Colors.lightBlue.shade100,
               Colors.lightBlue.shade400,
             ],
-            stops: [0.0, 1.0],
           ),
         ),
         child: Column(
@@ -102,13 +106,7 @@ class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomFooter(),
+      bottomNavigationBar: const CustomFooter(), // Ensure this is correctly imported and exists
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: EmergencyPreparationPage(),
-  ));
 }

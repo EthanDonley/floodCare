@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/emergencypage/emergency_page.dart';
 import 'package:flutter_playground/homepage/homepage.dart';
+import 'package:flutter_playground/homepage/information.dart';
 
 class CustomFooter extends StatelessWidget {
 
@@ -35,10 +36,10 @@ class CustomFooter extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const HomePage()),
           );
         } else if (index == 2) {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => InformationScreen()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const FloodInformationPage()),
+          );
         }
       },
     );

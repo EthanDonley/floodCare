@@ -10,7 +10,7 @@ class CurrentEventsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: Text('Current Events'),
         backgroundColor: Colors.white,
       ),
       body: Container(
@@ -28,24 +28,14 @@ class CurrentEventsPage extends StatelessWidget {
         child: Column(
           children: [
             const WaveHeader(),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: const Text(
-                "Current Events",
-                style: TextStyle(
-                  fontSize: 24,
-                  color:  Color.fromARGB(255, 68, 113, 167),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: const Text(
                 "View Current Flooding Events",
                 style: TextStyle(
                   fontSize: 24,
-                  color: Colors.blue,
+                  color:  Color.fromARGB(255, 68, 113, 167),
                   fontWeight: FontWeight.bold,
                 ),
               ),

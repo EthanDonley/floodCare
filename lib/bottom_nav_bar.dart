@@ -25,10 +25,10 @@ class CustomFooter extends StatelessWidget {
       ],
       onDestinationSelected: (int index) {
         if (index == 0) {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const EmergencyScreen()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EmergencyPage()),
+          );
         } else if (index == 1) {
           Navigator.push(
             context,

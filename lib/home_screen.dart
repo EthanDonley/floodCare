@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final WeatherService _weatherService = WeatherService();
-  dynamic _data;  // Changed from List<dynamic> to dynamic to handle both Map and List types
+  List<Map<String, dynamic>> _data = [];
   bool _isLoading = false;
   String _errorMessage = '';
 
@@ -20,29 +20,28 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _fetchData() async {
-  setState(() {
-    _isLoading = true;
-    _errorMessage = '';
-  });
+    setState(() {
+      _isLoading = true;
+      _errorMessage = '';
+    });
 
-  try {
-    var data = await _weatherService.fetchRiverDischargeData();
-    setState(() {
-      // If data contains a key that holds the list, access it directly
-      _data = data['river_discharge'];  // Assuming 'river_discharge' is the key where the list of data is stored
-      _errorMessage = 'Data loaded successfully!';
-    });
-  } catch (e) {
-    setState(() {
-      _errorMessage = e.toString();
-      _data = [];
-    });
-  } finally {
-    setState(() {
-      _isLoading = false;
-    });
+    try {
+      var data = await _weatherService.fetchRiverDischargeData();
+      setState(() {
+        _data = data;
+        _errorMessage = 'Data loaded successfully!';
+      });
+    } catch (e) {
+      setState(() {
+        _errorMessage = e.toString();
+        _data = [];
+      });
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -54,21 +53,20 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  
   Widget _buildBody() {
     if (_isLoading) {
       return Center(child: CircularProgressIndicator());
     } else if (_errorMessage.isNotEmpty) {
       return Center(child: Text(_errorMessage));
-    } else if (_data == null || _data.isEmpty) {
+    } else if (_data.isEmpty) {
       return Center(child: Text('No data to display.'));
     } else {
       return ListView.builder(
-        itemCount: _data.length,  // This assumes _data is a List
+        itemCount: _data.length,
         itemBuilder: (context, index) {
           var item = _data[index];
           return ListTile(
-            title: Text('Date: ${item['date']} - Discharge: ${item['discharge']} m³/s'),  // Adjust keys according to actual data structure
+            title: Text('Date: ${item["time"]}, Discharge: ${item["river_discharge (m³/s)"]}'),
           );
         },
       );

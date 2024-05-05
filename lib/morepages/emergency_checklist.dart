@@ -60,7 +60,7 @@ class _EmergencyPreparationPageState extends State<EmergencyPreparationPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Emergency Preparation'),
-        backgroundColor: Colors.lightBlue.shade400,
+        backgroundColor: Colors.white,
       ),
       body: Container(
         decoration: BoxDecoration(

@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class EmergencyButton extends StatelessWidget {
   const EmergencyButton({Key? key}) : super(key: key);
 
-  // Function to launch URL
+ 
   void _launchURL() async {
     const url = 'https://www.ready.gov/floods';
     if (await canLaunch(url)) {
@@ -20,8 +20,9 @@ class EmergencyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 25),
       child: ElevatedButton(
-        // Switch to emergency response page when this button is pressed
+       
         onPressed: () {
+          _launchURL();
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const EmergencyPage()),
@@ -31,29 +32,29 @@ class EmergencyButton extends StatelessWidget {
           shape: MaterialStateProperty.all(
             const CircleBorder(side: BorderSide(color: Colors.white, width: 4)), // White stroke around the button
           ),
-          padding: MaterialStateProperty.all(const EdgeInsets.all(20)), // Adjusted for optimal layout
+          padding: MaterialStateProperty.all(const EdgeInsets.all(20)), 
           backgroundColor: MaterialStateProperty.all(Colors.red),
           elevation: MaterialStateProperty.all(10),
-          minimumSize: MaterialStateProperty.all(const Size(300, 300)), // Increased size to fit contents
+          minimumSize: MaterialStateProperty.all(const Size(300, 300)),
           overlayColor: MaterialStateProperty.resolveWith<Color?>(
             (states) {
               if (states.contains(MaterialState.pressed)) {
-                return Colors.orange; // Splash color when pressed
+                return Colors.orange;
               }
               return null;
             },
           ),
         ),
         child: const Column(
-          mainAxisSize: MainAxisSize.min, // Ensures the column only takes the space it needs
+          mainAxisSize: MainAxisSize.min, 
           children: [
-            Icon(Icons.warning_rounded, size: 100, color: Colors.white), // Icon size adjusted
-            SizedBox(height: 8), // Space between icon and text
+            Icon(Icons.warning_rounded, size: 100, color: Colors.white), 
+            SizedBox(height: 8), 
             Text(
               "I'M IN AN EMERGENCY!",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18, // Font size adjusted for readability
+                fontSize: 18, 
                 color: Colors.white,
               ),
               textAlign: TextAlign.center,

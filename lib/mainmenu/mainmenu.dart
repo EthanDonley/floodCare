@@ -13,8 +13,8 @@ class MainMenu extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Main Menu"),
-        backgroundColor: Colors.transparent, // For a consistent look with the gradient background
-        elevation: 0, // Removes the shadow under the AppBar
+        backgroundColor: Colors.transparent, 
+        elevation: 0, 
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -34,7 +34,6 @@ class MainMenu extends StatelessWidget {
             menuButton(context, "Take a Stand", OfficialsPage()),
             menuButton(context, "Prepare", EmergencyPreparationPage()),
             menuButton(context, "Current Events", CurrentEventsPage())
-            // More buttons can be added here
           ],
         ),
       ),
@@ -44,16 +43,16 @@ class MainMenu extends StatelessWidget {
 
   Widget menuButton(BuildContext context, String title, Widget page) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),  // Vertical spacing between buttons
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => page));
         },
         style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white, backgroundColor: Colors.blue,  // Text color
+          foregroundColor: Colors.white, backgroundColor: Colors.blue, 
           textStyle: TextStyle(fontSize: 20),
-          padding: EdgeInsets.symmetric(vertical: 20),  // Padding inside the button
-          minimumSize: Size(double.infinity, 50)  // Full width buttons with fixed height
+          padding: EdgeInsets.symmetric(vertical: 20), 
+          minimumSize: Size(double.infinity, 50)  
         ),
         child: Text(title),
       ),

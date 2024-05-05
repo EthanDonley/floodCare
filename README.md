@@ -1,16 +1,5 @@
-# flutter_playground
+# floodCare
 
-A new Flutter project.
+floodCare is an application primarily targetted for people who reside in the San Joaquin county, an area that is particularly vulnerable to floods. The app serves as a middle-man to let those that are suspecting a flood in their area to have all the resources they need in the tap of a button in an app that is as easy and as accessible as possible. It also tracks your location using Google Maps's API to match your location to a flood map website to track nearby floods and damaged levees in your area.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
